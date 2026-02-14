@@ -1,0 +1,40 @@
+/* reset.css */
+
+/* Remove margens e preenchimentos padrão de todos os elementos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Garante que o HTML e o Body ocupem toda a altura da tela */
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+/* Remove estilos padrão de botões (como os do teclado) */
+button {
+    border: none;
+    background: none;
+    font-family: inherit;
+    cursor: pointer;
+    outline: none;
+}
+
+/* Melhora a renderização de fontes e imagens */
+body {
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Remove listas e decorações de links se necessário */
+ol, ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
