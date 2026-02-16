@@ -130,3 +130,26 @@ svg {
     width: 20px;
     fill: white;
 }
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+#grid {
+  display: grid;
+  grid-template-columns: repeat(6, 40px);
+  grid-template-rows: repeat(5, 40px);
+  gap: 5px;
+  margin: 20px auto;
+  width: max-content;
+}
+
+#grid div {
+  border: 1px solid #333;
+  width: 40px;
+  height: 40px;
+}
+
+#keyboard {
+  margin-top: 20px;
+}
