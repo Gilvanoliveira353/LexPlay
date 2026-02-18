@@ -116,17 +116,20 @@ function updateBoard() {
 }
 
 function showMessage(msg) {
-  const messageEl = document.createElement("div");
-  messageEl.textContent = msg;
-  messageEl.className = "message";
-  messageContainer.appendChild(messageEl);
-  setTimeout(() => {
-    messageEl.style.opacity = "0";
-    setTimeout(() => {
-      messageContainer.removeChild(messageEl);
-    }, 300);
-  }, 2000);
+  Toastify({
+    text: msg,
+    duration: 3000,
+    gravity: "top",
+    position: "center",
+    style: {
+      background: "#ffffff",
+      color: "#121213",
+      fontWeight: "bold",
+      borderRadius: "6px"
+    }
+  }).showToast();
 }
+
 
 function shakeTiles(row) {
   const rowEl = board.children[row];
