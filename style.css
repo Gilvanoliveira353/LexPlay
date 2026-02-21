@@ -41,25 +41,34 @@ body {
   box-sizing: border-box;
 }
 header {
+  position: relative;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center; /* centraliza o título */
   border-bottom: 1px solid var(--color-border);
   width: 100%;
   height: 50px;
   margin-bottom: 10px;
-  flex-shrink: 0;
+  
 }
+
 header h1 {
-  display: flex;
-  align-items: center;   /* centraliza verticalmente */
-  gap: 40px;             /* espaço entre logo e texto */
-  justify-content: center; /* mantém o conjunto centralizado no header */
+  margin: 0;
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: 0.1rem;
+}
+
+
+.logo {
+  position: absolute;
+  left: 40px;
 }
 
 .logo img {
-  height: 40px; /* ajuste conforme o tamanho desejado */
+  height: 40px;
 }
+
 
 h1 {
   font-size: 32px;
@@ -152,4 +161,33 @@ h1 {
   padding: 10px 20px; border-radius: 4px; margin-bottom: 10px;
   font-weight: bold; font-size: 14px; opacity: 1;
   transition: opacity 0.3s ease; box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+#reset-button {
+  display: none; 
+  margin: 25px auto;
+  padding: 16px 40px;
+  background-color: var(--color-present); /* Amarelo base */
+  color: #000; /* Preto puro para contraste máximo */
+  border: none;
+  border-radius: 8px;
+  font-family: inherit;
+  font-weight: 900;
+  font-size: 18px;
+  text-transform: uppercase;
+  letter-spacing: 0.15rem;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  animation: fadeIn 0.5s ease;
+}
+
+#reset-button:hover {
+  background-color: #ffda47; /* Amarelo "ouro" bem mais vivo */
+  transform: scale(1.1) translateY(-3px); /* Cresce e sobe levemente */
+  box-shadow: 0 12px 25px rgba(255, 218, 71, 0.5); /* Brilho amarelo intenso */
+  filter: brightness(1.1); /* Dá um efeito de luz acesa */
+}
+
+#reset-button:active {
+  transform: scale(0.95);
 }

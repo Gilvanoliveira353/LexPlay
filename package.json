@@ -6,12 +6,12 @@
     "jest-environment-jsdom": "^30.2.0"
   },
   "scripts": {
-    "test": "jest"
-  },
-  "jest": {
-  "testEnvironment": "jsdom"
+  "test": "jest",
+  "test:cov": "jest --coverage"
 },
-
+  "jest": {
+    "testEnvironment": "jsdom"
+  },
   "name": "jogo_word",
   "version": "1.0.0",
   "main": "babel.config.js",
@@ -222,7 +222,6 @@
     "yargs-parser": "^21.1.1",
     "yocto-queue": "^0.1.0"
   },
-  
   "keywords": [],
   "author": "",
   "license": "ISC",

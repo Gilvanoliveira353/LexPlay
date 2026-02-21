@@ -2,6 +2,8 @@
 const WORD_LENGTH = 5;
 const FLIP_ANIMATION_DURATION = 500;
 const DANCE_ANIMATION_DURATION = 500;
+const resetButton = document.getElementById("reset-button");
+
 
 // Banco de palavras em português (apenas 5 letras)
 const wordBank = [
@@ -13,7 +15,7 @@ const wordBank = [
 const validWords = wordBank.filter(w => w.length === WORD_LENGTH);
 
 // Sorteia uma palavra aleatória
-const targetWord = validWords[Math.floor(Math.random() * validWords.length)];
+let targetWord = validWords[Math.floor(Math.random() * validWords.length)];
 
 // Estado do Jogo
 let guesses = [];
@@ -201,14 +203,18 @@ function updateKeyboardColor(letter, state) {
   }
 }
 
+// SUBSTITUA as funções existentes por estas:
+
 function checkWinCondition() {
   const lastGuess = guesses[guesses.length - 1];
-  if (lastGuess === targetWord) {
-    showMessage("Parabéns!");
+  if (lastGuess === targetWord || guesses.length === 6) {
+    if (lastGuess === targetWord) {
+      showMessage("Parabéns!");
+    } else {
+      showMessage(`A palavra era: ${targetWord}`);
+    }
     gameOver = true;
-  } else if (guesses.length === 6) {
-    showMessage(`A palavra era: ${targetWord}`);
-    gameOver = true;
+    resetButton.style.display = "block"; // Agora esta linha fará o botão aparecer
   }
 }
 
@@ -216,5 +222,35 @@ function updateDebug() {
   debugPanel.innerHTML = `Palavra: ${targetWord} | Tentativas: ${guesses.length}/6 | Atual: ${currentGuess}`;
 }
 
+// ADICIONE esta nova função logo abaixo:
+
+function resetGame() {
+  // 1. Resetar variáveis de estado
+  guesses = [];
+  currentGuess = "";
+  gameOver = false;
+  targetWord = validWords[Math.floor(Math.random() * validWords.length)];
+
+  // 2. Limpar o Board (DOM)
+  const tiles = document.querySelectorAll(".tile");
+  tiles.forEach(tile => {
+    tile.textContent = "";
+    tile.removeAttribute("data-state");
+    tile.classList.remove("flip", "shake"); // Remova também a classe shake se houver
+  });
+
+  // 3. Resetar Teclado (DOM)
+  const keys = document.querySelectorAll(".key");
+  keys.forEach(key => {
+    key.style.backgroundColor = "";
+  });
+
+  // 4. Esconder o botão e atualizar debug
+  resetButton.style.display = "none";
+  updateDebug();
+}
+
+// 5. Ativar o clique do botão
+resetButton.addEventListener("click", resetGame);
 // Iniciar
 initGame();
